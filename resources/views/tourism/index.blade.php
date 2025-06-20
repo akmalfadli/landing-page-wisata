@@ -54,7 +54,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border-bottom: 1px solid var(--border-light);
         }
@@ -65,11 +65,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         .logo {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
@@ -88,10 +88,10 @@
         .nav-links a {
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 350;
+            font-size: 0.8rem;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.2rem 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
@@ -179,7 +179,7 @@
         }
 
          .hero-title {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             background: #f8fafc;
             -webkit-background-clip: text;
@@ -190,14 +190,14 @@
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #f8fafc;
             margin-bottom: 1.5rem;
             font-weight: 500;
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #424242;
             margin-bottom: 0.5rem;
             max-width: 600px;
@@ -853,7 +853,7 @@
 <body>
     <nav class="nav-bar">
         <div class="nav-container">
-            <div class="logo"> <img src="{{ asset('logo/icon.png') }}" style="max-width: 65px;"/> {{ $settings['hero_title'] }}</div>
+            <div class="logo"> <img src="{{ asset('logo/icon.png') }}" style="max-width: 45px;"/> {{ $settings['hero_title'] }}</div>
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('home')">Beranda</a></li>
                 <li><a onclick="scrollToSection('galeri')">Galeri</a></li>
