@@ -1508,7 +1508,7 @@
         function bookPackage(packageId, packageName, packagePrice) {
             const message = `🏔️ *Pemesanan Paket Wisata*\n\nHalo! Saya tertarik untuk memesan:\n📦 *${packageName}*\n💰 *${packagePrice}*\n\nMohon informasi lebih lanjut mengenai:\n✅ Ketersediaan tanggal\n✅ Proses pemesanan\n✅ Metode pembayaran\n✅ Detail itinerary\n\nTerima kasih! 🙏`;
 
-            const phoneNumber = '6285707137030';
+            const phoneNumber = '6281229130556';
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
             window.open(whatsappUrl, '_blank');
