@@ -76,6 +76,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.02em;
+            align-content: center;
         }
 
         .nav-links {
@@ -155,7 +156,7 @@
 
         .hero-content {
             max-width: 900px;
-            padding: 2rem 1rem;
+            padding: 2rem;
             border-radius: 24px;
             animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
@@ -178,7 +179,7 @@
         }
 
          .hero-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             background: #f8fafc;
             -webkit-background-clip: text;
@@ -189,7 +190,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #f8fafc;
             margin-bottom: 1.5rem;
             font-weight: 500;
@@ -198,7 +199,7 @@
         .hero-description {
             font-size: 1.1rem;
             color: #424242;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -804,17 +805,6 @@
                 gap: 1.5rem;
             }
 
-            .video-controls {
-                bottom: 20px;
-                right: 20px;
-                gap: 8px;
-            }
-
-            .video-btn {
-                width: 48px;
-                height: 48px;
-            }
-
             .floating-element {
                 display: none;
             }
@@ -863,7 +853,7 @@
 <body>
     <nav class="nav-bar">
         <div class="nav-container">
-            <div class="logo">🏔️ {{ $settings['hero_title'] }}</div>
+            <div class="logo"> <img src="{{ asset('logo/icon.png') }}" style="max-width: 65px;"/> {{ $settings['hero_title'] }}</div>
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('home')">Beranda</a></li>
                 <li><a onclick="scrollToSection('galeri')">Galeri</a></li>
@@ -896,9 +886,9 @@
         <div class="hero-content">
             <div class="row align-items-center">
                 <div class="col-sm-2">
-                <img src="{{ asset("images/background-image.png") }}" class="img-fluid" style="max-width: 200px;" />
+                <img src="{{ asset("images/background-image.png") }}" class="img-fluid" style="max-width: 180px;" />
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                 <h1 class="hero-title">{{ $settings['hero_title'] }}</h1>
                 <p class="hero-subtitle">{{ $settings['hero_subtitle'] }}</p>
                 <p class="hero-description">{{ $settings['hero_description'] }}</p>
@@ -909,19 +899,6 @@
                 </div>
             </div>
             </div>
-
-
-
-
-        <!-- Video Controls -->
-        <div class="video-controls">
-            <button class="video-btn" id="playPauseBtn" onclick="toggleVideoPlayback()">
-                <span id="playPauseIcon">⏸️</span>
-            </button>
-            <button class="video-btn" id="muteBtn" onclick="toggleVideoMute()">
-                <span id="muteIcon">🔇</span>
-            </button>
-        </div>
     </section>
 
     <section class="section">
