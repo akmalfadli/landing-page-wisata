@@ -76,13 +76,51 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.02em;
-            align-content: center;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            max-width: 45px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2.5rem;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
@@ -114,6 +152,50 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+            transition: left 0.3s ease;
+            padding-top: 80px;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 2rem;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 1rem 0;
+            display: block;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #0d9488;
+            padding-left: 1rem;
         }
 
         /* Modern Hero Section */
@@ -153,7 +235,6 @@
             z-index: -1;
         }
 
-
         .hero-content {
             max-width: 900px;
             padding: 2rem;
@@ -162,9 +243,28 @@
             backdrop-filter: blur(10px);
             border: none;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
             z-index: 10;
             position: relative;
+        }
+
+        .hero-content .row {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-content .col-sm-2 {
+            flex: 0 0 auto;
+        }
+
+        .hero-content .col-sm-4 {
+            flex: 1;
+        }
+
+        .hero-content img {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
         }
 
         @keyframes fadeInUp {
@@ -178,7 +278,7 @@
             }
         }
 
-         .hero-title {
+        .hero-title {
             font-size: 2.5rem;
             font-weight: 800;
             background: #f8fafc;
@@ -204,7 +304,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
 
         /* Video Controls */
         .video-controls {
@@ -277,7 +376,7 @@
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 800;
             text-align: center;
             margin-bottom: 4rem;
@@ -783,36 +882,260 @@
             pointer-events: none;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive Design */
         @media (max-width: 768px) {
-            .hero-content {
-                padding: 2.5rem 2rem;
-                margin: 0 1rem;
+            .hamburger {
+                display: flex;
             }
 
             .nav-links {
                 display: none;
             }
 
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo img {
+                max-width: 35px;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .hero-content .row {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .hero-content img {
+                max-width: 120px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+
             .section {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .welcome-message {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .javanese-text {
+                font-size: 1.1rem;
+            }
+
+            .package-section {
+                padding: 3rem 1rem;
+                margin: 3rem 0;
             }
 
             .package-grid,
-            .gallery-grid,
-            .facilities-grid {
+            .gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .floating-element {
-                display: none;
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .gallery-item {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+
+            .facilities-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .facility-card {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .facility-image {
+                width: 100%;
+                height: 120px;
+                border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            }
+
+            .facility-image img {
+                border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            }
+
+            .facility-content {
+                padding: 1.5rem;
+                text-align: center;
+            }
+
+            .price-section {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .price-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .price-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .price-type {
+                font-size: 1.2rem;
+            }
+
+            .price-amount {
+                font-size: 2rem;
+            }
+
+            .location-section {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .location-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .location-info {
+                font-size: 1rem;
+            }
+
+            .footer {
+                padding: 3rem 1rem 2rem;
+                margin-top: 3rem;
+            }
+
+            .footer h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .footer p {
+                font-size: 1rem;
+            }
+
+            .video-controls {
+                bottom: 20px;
+                right: 20px;
+                gap: 8px;
+            }
+
+            .video-btn {
+                width: 48px;
+                height: 48px;
             }
         }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 1rem;
+                margin: 0 0.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .section {
+                padding: 2rem 0.8rem;
+            }
+
+            .welcome-message {
+                padding: 1.5rem 1rem;
+            }
+
+            .javanese-text {
+                font-size: 1rem;
+            }
+
+            .package-card,
+            .price-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                max-width: 320px;
+            }
+
+            .mobile-nav-links {
+                padding: 1.5rem;
+            }
+
+            .mobile-nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
             .package-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .package-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -827,6 +1150,25 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu Animation */
+        @keyframes slideInLeft {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                left: 0;
+            }
+            to {
+                left: -100%;
             }
         }
 
@@ -848,21 +1190,100 @@
             outline-offset: 4px;
             border-radius: 4px;
         }
+
+        .hamburger:focus {
+            outline: 2px solid #0d9488;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Improved touch targets for mobile */
+        @media (max-width: 768px) {
+            .mobile-nav-links a {
+                padding: 1.2rem 0;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+            }
+
+            .hamburger {
+                padding: 0.8rem;
+                min-width: 48px;
+                min-height: 48px;
+            }
+
+            .btn-primary {
+                min-height: 48px;
+                padding: 1rem 2rem;
+            }
+
+            .package-btn {
+                min-height: 48px;
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav-bar">
         <div class="nav-container">
-            <div class="logo"> <img src="{{ asset('logo/icon.png') }}" style="max-width: 45px;"/> {{ $settings['hero_title'] }}</div>
+            <div class="logo">
+                <img src="{{ asset('logo/icon.png') }}" alt="Logo"/>
+                {{ $settings['hero_title'] }}
+            </div>
+
+            <!-- Desktop Navigation -->
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('home')">Beranda</a></li>
                 <li><a onclick="scrollToSection('galeri')">Galeri</a></li>
                 <li><a onclick="scrollToSection('paket')">Paket Wisata</a></li>
                 <li><a onclick="scrollToSection('fasilitas')">Fasilitas</a></li>
+                <li><a href="https://my.karaghills.com">Reservasi Pendopo</a></li>
                 <li><a onclick="scrollToSection('harga')">Harga</a></li>
             </ul>
+
+            <!-- Mobile Hamburger Menu -->
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a onclick="scrollToSection('home'); closeMobileMenu();">Beranda</a></li>
+            <li><a onclick="scrollToSection('galeri'); closeMobileMenu();">Galeri</a></li>
+            <li><a onclick="scrollToSection('paket'); closeMobileMenu();">Paket Wisata</a></li>
+            <li><a onclick="scrollToSection('fasilitas'); closeMobileMenu();">Fasilitas</a></li>
+            <li><a href="https://my.karaghills.com">Reservasi Pendopo</a></li>
+            <li><a onclick="scrollToSection('harga'); closeMobileMenu();">Harga</a></li>
+        </ul>
+    </div>
 
     <section id="home" class="hero-section">
         <!-- Background Video -->
@@ -875,30 +1296,33 @@
         <!-- Video Overlay -->
         <div class="hero-overlay"></div>
 
-        <!-- Floating Elements -->
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-
         <!-- Hero Content -->
         <div class="hero-content">
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-sm-2">
-                <img src="{{ asset("images/background-image.png") }}" class="img-fluid" style="max-width: 180px;" />
+                    <img src="{{ asset("images/background-image.png") }}" class="img-fluid" alt="Background Image" style="max-width: 300px;" />
                 </div>
                 <div class="col-sm-4">
-                <h1 class="hero-title">{{ $settings['hero_title'] }}</h1>
-                <p class="hero-subtitle">{{ $settings['hero_subtitle'] }}</p>
-                <p class="hero-description">{{ $settings['hero_description'] }}</p>
-                <a href="#galeri" class="btn-primary">
-                    <span>Jelajahi Wisata</span>
-                    <span>→</span>
-                </a>
+                    <h1 class="hero-title">{{ $settings['hero_title'] }}</h1>
+                    <p class="hero-subtitle">{{ $settings['hero_subtitle'] }}</p>
+                    <p class="hero-description">{{ $settings['hero_description'] }}</p>
+                    <a href="#galeri" class="btn-primary">
+                        <span>Jelajahi Wisata</span>
+                        <span>→</span>
+                    </a>
                 </div>
             </div>
-            </div>
+        </div>
+
+        <!-- Video Controls -->
+        <div class="video-controls">
+            <button class="video-btn" id="playPauseBtn" onclick="toggleVideoPlayback()">
+                <span id="playPauseIcon">⏸️</span>
+            </button>
+            <button class="video-btn active" id="muteBtn" onclick="toggleVideoMute()">
+                <span id="muteIcon">🔇</span>
+            </button>
+        </div>
     </section>
 
     <section class="section">
@@ -916,14 +1340,11 @@
                 @foreach($galleryItems as $item)
                     <div class="gallery-item fade-in" onclick="openGallery('{{ $item->id }}')">
                         <div class="gallery-image">
-                            {{-- @if($item->image_url_full) --}}
-                                <img src="{{ asset('gallery/'.$i.'.webp') }}"
-                                    loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                <div class="fallback-icon" style="display: none;">{{ $item->icon ?? '🏔️' }}</div>
-                            {{-- @else --}}
-                                {{-- <div class="fallback-icon">{{ $item->icon ?? '🏔️' }}</div> --}}
-                            {{-- @endif --}}
+                            <img src="{{ asset('gallery/'.$i.'.webp') }}"
+                                alt="{{ $item->title }}"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-icon" style="display: none;">{{ $item->icon ?? '🏔️' }}</div>
                         </div>
                         <div class="gallery-title">{{ $item->title }}</div>
                         <div class="gallery-description">{{ $item->description }}</div>
@@ -933,7 +1354,6 @@
             </div>
         </section>
     @endif
-
 
     @if($packages->count() > 0)
     <section id="paket" class="package-section">
@@ -1036,6 +1456,37 @@
     </footer>
 
     <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+            const body = document.body;
+
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = 'auto';
+            }
+        }
+
+        function closeMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+            const body = document.body;
+
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            body.style.overflow = 'auto';
+        }
+
         // Smooth scroll function
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
@@ -1199,6 +1650,13 @@
             }
         }, { passive: true });
 
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
         // Enhanced DOMContentLoaded event
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize video handling
@@ -1272,6 +1730,32 @@
                 heroVideo.pause();
             }
         });
+
+        // Handle touch events for better mobile interaction
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const deltaY = touchStartY - touchEndY;
+
+            if (Math.abs(deltaY) > swipeThreshold) {
+                // Optional: Add swipe gestures for navigation
+                // For now, just ensure mobile menu closes on content swipe
+                if (document.querySelector('.mobile-menu').classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            }
+        }
     </script>
 </body>
 </html>
