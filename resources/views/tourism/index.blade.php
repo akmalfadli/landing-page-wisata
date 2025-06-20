@@ -909,28 +909,31 @@
     </section>
 
     @if($galleryItems->count() > 0)
-    <section id="galeri" class="section">
-        <h2 class="section-title">Galeri Wisata</h2>
-        <div class="gallery-grid">
-            @foreach($galleryItems as $item)
-            <div class="gallery-item fade-in" onclick="openGallery('{{ $item->id }}')">
-                <div class="gallery-image">
-                    @if($item->image_url_full)
-                        <img src="{{ $item->image_url_full }}" alt="{{ $item->title }}"
-                             loading="lazy"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="fallback-icon" style="display: none;">{{ $item->icon ?? '🏔️' }}</div>
-                    @else
-                        <div class="fallback-icon">{{ $item->icon ?? '🏔️' }}</div>
-                    @endif
-                </div>
-                <div class="gallery-title">{{ $item->title }}</div>
-                <div class="gallery-description">{{ $item->description }}</div>
+        @php $i = 0; @endphp
+        <section id="galeri" class="section">
+            <h2 class="section-title">Galeri Wisata</h2>
+            <div class="gallery-grid">
+                @foreach($galleryItems as $item)
+                    <div class="gallery-item fade-in" onclick="openGallery('{{ $item->id }}')">
+                        <div class="gallery-image">
+                            {{-- @if($item->image_url_full) --}}
+                                <img src="{{ asset('gallery/'.$i.'.webp') }}"
+                                    loading="lazy"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="fallback-icon" style="display: none;">{{ $item->icon ?? '🏔️' }}</div>
+                            {{-- @else --}}
+                                {{-- <div class="fallback-icon">{{ $item->icon ?? '🏔️' }}</div> --}}
+                            {{-- @endif --}}
+                        </div>
+                        <div class="gallery-title">{{ $item->title }}</div>
+                        <div class="gallery-description">{{ $item->description }}</div>
+                    </div>
+                    @php $i++; @endphp
+                @endforeach
             </div>
-            @endforeach
-        </div>
-    </section>
+        </section>
     @endif
+
 
     @if($packages->count() > 0)
     <section id="paket" class="package-section">
